@@ -452,6 +452,13 @@ impl Client {
             context.conn_stats.sent_bytes,
             context.conn_stats.lost_bytes
         );
+        println!(
+            "recv bytes rate: {:.2} MB/s, sent bytes rate: {:.2} MB/s",
+            context.conn_stats.recv_bytes as f64 / d.as_millis() as f64 * 1000.0
+                / (1024.0 * 1024.0),
+            context.conn_stats.sent_bytes as f64 / d.as_millis() as f64 * 1000.0
+                / (1024.0 * 1024.0),
+        );
         println!();
     }
 }
